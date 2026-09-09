@@ -1,0 +1,100 @@
+/* Sunlit Sands (light): hand-shipped copy of Omarchy's generated hyprland-preview-share-picker.css (the
+   screen-share source picker). Shipped unchanged on 2026-09-07 as a starting point; replaces the template's
+   output for everyone who installs the theme. Regenerate after a palette change (delete,
+   `omarchy theme refresh`, copy back) and re-apply the changes listed here.
+   Changes from the template: none yet. */
+
+@define-color foreground #2a2f4a;
+@define-color background #f7f1e3;
+@define-color accent #2a78b0;
+@define-color muted #5d6b7d;
+@define-color card_bg #bcd8f5;
+@define-color text_dark #f7f1e3;
+@define-color accent_hover #2f8ad6;
+@define-color selected_tab #2a78b0;
+@define-color text #2a2f4a;
+
+* {
+  all: unset;
+  font-family: JetBrains Mono NF;
+  color: @foreground;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.window {
+  background: alpha(@background, 0.95);
+  border: solid 2px @accent;
+  margin: 4px;
+  padding: 18px;
+}
+
+tabs {
+    padding: 0.5rem 1rem;
+}
+
+tabs > tab {
+    margin-right: 1rem;
+}
+
+.tab-label {
+    color: @text;
+    transition: all 0.2s ease;
+}
+
+tabs > tab:checked > .tab-label, tabs > tab:active > .tab-label {
+    text-decoration: underline currentColor;
+    color: @selected_tab;
+}
+
+tabs > tab:focus > .tab-label {
+    color: @foreground;
+}
+
+.page {
+    padding: 1rem;
+}
+
+.image-label {
+    font-size: 12px;
+    padding: 0.25rem;
+}
+
+flowboxchild > .card, button > .card {
+    transition: all 0.2s ease;
+    border: solid 2px transparent;
+    border-color: @background;
+    border-radius: 5px;
+    background-color: @card_bg;
+    padding: 5px;
+}
+
+flowboxchild:hover > .card, button:hover > .card, flowboxchild:active > .card, flowboxchild:selected > .card, button:active > .card, button:selected > .card, button:focus > .card {
+    border: solid 2px @accent;
+}
+
+.image {
+    border-radius: 5px;
+}
+
+.region-button {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background-color: @accent;
+    color: @text_dark;
+    transition: all 0.2s ease;
+}
+
+.region-button > label {
+    color: @text_dark;
+}
+
+.region-button:not(:disabled):hover, .region-button:not(:disabled):focus {
+    background-color: @accent_hover;
+    color: @text_dark;
+}
+
+.region-button:disabled {
+    background-color: @muted;
+    color: @background;
+}

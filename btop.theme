@@ -1,0 +1,102 @@
+# Sunlit Sands (light): hand-shipped copy of Omarchy's generated btop.theme. Shipped unchanged on
+# 2026-09-07 as a starting point; replaces the template's output for everyone who installs the theme.
+# Regenerate after a palette change (delete, `omarchy theme refresh`, copy back) and re-apply the
+# changes listed here.
+# Changes from the template (2026-09-08): every graph gradient (temp, cpu, free, cached, available, used,
+# download, upload, process) uses the bright_* terminal colours instead of the normal ones, so the dotted
+# graphs pop on the sand page; graph_text and proc_misc moved from light_foreground to foreground because
+# they read as too light. Box borders, title, selection and gradient_color_N are the template's own.
+
+# Main background, empty for terminal default, need to be empty if you want transparent background
+theme[main_bg]="#f7f1e3"
+
+# Main text color
+theme[main_fg]="#2a2f4a"
+
+# Title color for boxes
+theme[title]="#2a2f4a"
+
+# Highlight color for keyboard shortcuts
+theme[hi_fg]="#2a78b0"
+
+# Background color of selected item in processes box
+theme[selected_bg]="#f3e2a0"
+
+# Foreground color of selected item in processes box
+theme[selected_fg]="#2a78b0"
+
+# Color of inactive/disabled text
+theme[inactive_fg]="#5d6b7d"
+
+# Color of text appearing on top of graphs, i.e uptime and current network graph scaling
+theme[graph_text]="#2a2f4a"
+
+# Background color of the percentage meters
+theme[meter_bg]="#f3e2a0"
+
+# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
+theme[proc_misc]="#2a2f4a"
+
+# CPU, Memory, Network, Proc box outline colors
+theme[cpu_box]="#8a5a9e"
+theme[mem_box]="#46782b"
+theme[net_box]="#c43a2a"
+theme[proc_box]="#2a78b0"
+
+# Box divider line and small boxes line color
+theme[div_line]="#5d6b7d"
+
+# Temperature graph color (Green -> Yellow -> Red)
+theme[temp_start]="#56942f"
+theme[temp_mid]="#a67a00"
+theme[temp_end]="#e8452f"
+
+# CPU graph colors (Teal -> Blue -> Magenta)
+theme[cpu_start]="#1c94a2"
+theme[cpu_mid]="#2f8ad6"
+theme[cpu_end]="#a86dbd"
+
+# Mem/Disk free meter
+theme[free_start]="#a86dbd"
+theme[free_mid]="#2f8ad6"
+theme[free_end]="#1c94a2"
+
+# Mem/Disk cached meter
+theme[cached_start]="#2f8ad6"
+theme[cached_mid]="#1c94a2"
+theme[cached_end]="#a86dbd"
+
+# Mem/Disk available meter
+theme[available_start]="#a67a00"
+theme[available_mid]="#e8452f"
+theme[available_end]="#e8452f"
+
+# Mem/Disk used meter (Green -> Teal -> Blue)
+theme[used_start]="#56942f"
+theme[used_mid]="#1c94a2"
+theme[used_end]="#2f8ad6"
+
+# Download graph colors
+theme[download_start]="#a67a00"
+theme[download_mid]="#e8452f"
+theme[download_end]="#e8452f"
+
+# Upload graph colors (Green -> Teal -> Blue)
+theme[upload_start]="#56942f"
+theme[upload_mid]="#1c94a2"
+theme[upload_end]="#2f8ad6"
+
+# Process box color gradient for threads, mem and cpu usage
+theme[process_start]="#1c94a2"
+theme[process_mid]="#2f8ad6"
+theme[process_end]="#a86dbd"
+
+# Graph gradient colors (spectrum shades from background to foreground)
+theme[gradient_color_0]="#f7f1e3"
+theme[gradient_color_1]="#bcd8f5"
+theme[gradient_color_2]="#f3e2a0"
+theme[gradient_color_3]="#5d6b7d"
+theme[gradient_color_4]="#6e7288"
+theme[gradient_color_5]="#2a2f4a"
+theme[gradient_color_6]="#474c66"
+theme[gradient_color_7]="#2a2f4a"
