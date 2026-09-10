@@ -7,7 +7,7 @@
     "accent": "#2a78b0",
     "selectionBackground": "#f3e2a0",
     "selectionForeground": "#2a2f4a",
-    "selectedBackground": "#cad6d8",
+    "selectedBackground": "#bcd8f5",
     "color0": "#f7f1e3",
     "color1": "#c43a2a",
     "color2": "#46782b",
@@ -24,15 +24,16 @@
     "color13": "#a86dbd",
     "color14": "#1c94a2",
     "color15": "#2a2f4a",
-    "panel": "#ebe5da",
-    "panelAlt": "#e3ded4",
-    "panelPending": "#dee2dd",
+    "panel": "#dbe7f2",
+    "panelAlt": "#bcd8f5",
+    "panelPending": "#bcd8f5",
     "panelSuccess": "#e2e2cd",
     "panelError": "#f1dbcd",
-    "border": "#b9b7b5",
-    "borderMuted": "#cecac4",
-    "mutedText": "#70717e",
-    "dimText": "#95949a"
+    "border": "#5d6b7d",
+    "borderMuted": "#bfd3e6",
+    "mutedText": "#5d6b7d",
+    "dimText": "#6e7288",
+    "orange": "#b44b1a"
   },
   "colors": {
     "accent": "accent",
@@ -85,11 +86,16 @@
     "thinkingMedium": "color5",
     "thinkingHigh": "color3",
     "thinkingXhigh": "color1",
-    "bashMode": "color3"
+    "bashMode": "color3",
+    "scrollbarTrack": "borderMuted",
+    "scrollbarThumb": "accent",
+    "searchMatchBg": "selectionBackground",
+    "searchMatchText": "foreground",
+    "thinkingMax": "orange"
   },
   "export": {
     "pageBg": "#f7f1e3",
-    "cardBg": "#ebe5da",
-    "infoBg": "#e3ded4"
+    "cardBg": "#dbe7f2",
+    "infoBg": "#bcd8f5"
   }
 }
