@@ -25,7 +25,7 @@ As with any Omarchy theme, a few apps need one step the first time:
 
 ## Optional extras
 
-Omarchy has no way yet for a theme to ship a GTK template or an icon set, so these two ride along in the theme folder. Each takes one paste in a terminal to switch on. Skip them and the theme works fine without.
+Omarchy themes an app by filling a template with the palette on every theme change, and it lets you add your own templates for apps it has not covered yet. This theme's `extra-templates/` folder holds two such templates, for GTK apps and for Zed. Omarchy does not read that folder on its own, so each one takes a single paste: copy the template into Omarchy's user-templates folder, then link the file it produces to where the app looks. The folder icons work the same way but need a small script instead of a template. Skip any of these and the theme works fine without.
 
 ### Files and other GTK apps
 
@@ -41,6 +41,21 @@ omarchy theme refresh
 Reopen Files to see it. The template follows whichever theme is active, so it keeps working if you switch themes. If you already had a `~/.config/gtk-4.0/gtk.css` of your own, this replaces it.
 
 To undo: `rm ~/.config/omarchy/themed/gtk.css.tpl ~/.config/gtk-4.0/gtk.css`
+
+### Zed
+
+Gives Zed the same sand page, sky chrome and gold selection as the other editors. Paste this once, then pick "Omarchy" in Zed's theme picker (Ctrl+K then Ctrl+T):
+
+```
+cp ~/.config/omarchy/themes/sunlit-sands-light/extra-templates/zed.json.tpl ~/.config/omarchy/themed/
+mkdir -p ~/.config/zed/themes
+ln -sfn ~/.local/state/omarchy/current/theme/zed.json ~/.config/zed/themes/omarchy.json
+omarchy theme refresh
+```
+
+Zed reloads it live and follows every theme change from then on. If Omarchy installed Zed for you, it also installed omazed, which keeps offering its own "Omazed" theme in the picker; the two do not interfere.
+
+To undo: `rm ~/.config/omarchy/themed/zed.json.tpl ~/.config/zed/themes/omarchy.json` and pick another theme in Zed.
 
 ### Mesa folder icons
 
