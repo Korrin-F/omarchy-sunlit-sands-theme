@@ -2,6 +2,8 @@
 
 An [Omarchy](https://omarchy.org) theme. A warm sand page under a cool sky, for working in daylight. Work in progress.
 
+![Sunlit Sands on the desktop: Zed, the terminal palette, Files and btop over a desert wallpaper](screenshots/desktop.webp)
+
 ## Install
 
 ```
@@ -11,6 +13,39 @@ omarchy theme install https://github.com/Korrin-F/omarchy-sunlit-sands-light-the
 Or in Omarchy: Super+Space, then Install > Style > Theme and paste the URL above.
 
 That is all it takes. It installs as `sunlit-sands-light`. Everything below is optional.
+
+## Wallpapers
+
+Six scenes in the same flat gouache, all at high noon: bleached sky in the upper two thirds, land in the bottom third, calm enough to keep the bar readable. Omarchy cycles through them.
+
+<p>
+  <img src="screenshots/wallpaper-1-sonoran-desert-flat.webp" width="32%" alt="Sonoran desert flat">
+  <img src="screenshots/wallpaper-2-saguaro-pair.webp" width="32%" alt="Saguaro pair">
+  <img src="screenshots/wallpaper-3-mesa-and-cloud.webp" width="32%" alt="Mesa and cloud">
+</p>
+<p>
+  <img src="screenshots/wallpaper-4-dry-riverbed.webp" width="32%" alt="Dry riverbed">
+  <img src="screenshots/wallpaper-5-canyon-rim.webp" width="32%" alt="Canyon rim">
+  <img src="screenshots/wallpaper-6-heat-shimmer-highway.webp" width="32%" alt="Heat shimmer highway">
+</p>
+
+## A closer look
+
+The page is warm sand and the panels are cool sky; that temperature contrast is what reads as sunlight. Selection is gold, the accent is sky cerulean, and the terminal palette leans on terracotta, ochre and sage.
+
+<p>
+  <img src="screenshots/terminal-palette.webp" width="48%" alt="The terminal palette">
+  <img src="screenshots/files-mesa-folders.webp" width="48%" alt="Files with the mesa folder icons">
+</p>
+
+Left: the full palette in the terminal. Right: Files with the theme's own folder icons, terracotta mesas with a saguaro, on the sky sidebar.
+
+<p>
+  <img src="screenshots/menu.webp" width="32%" alt="The Omarchy menu">
+  <img src="screenshots/boot-screen.webp" width="64%" alt="The boot screen">
+</p>
+
+Left: the Omarchy menu, sand card with a sky border. Right: the boot and disk-unlock screen, the Omarchy wordmark in five warm bands with cacti growing out of the letters.
 
 ## What it themes
 
