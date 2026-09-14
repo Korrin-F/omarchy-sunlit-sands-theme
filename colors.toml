@@ -9,10 +9,14 @@ mode = "light"
 
 # Sky cerulean. Borders and bar highlights read as sky against the cream. 4.2:1, fine for borders and highlights.
 accent = "#2a78b0"
-# Unfocused window border. Omarchy's Hyprland template reads this key if present and otherwise falls back
-# to a stock grey (rgba(595959aa)) that belongs to no theme; set here to `muted` so inactive frames sit in
-# the palette. Same visual weight as the stock grey, just the cool shadow tint. (2026-09-07)
-hyprland_inactive_border = "#5d6b7d"
+# Window borders. Omarchy's Hyprland template reads these two keys when present (otherwise a stock grey for
+# unfocused and the accent for focused); each takes one colour or a gradient of slot names plus an angle.
+# Unfocused: a quiet top-to-bottom blend from the muted ink to the dimmed ink, so idle frames stay in the palette.
+hyprland_inactive_border = "muted dark_foreground 90deg"
+# Focused: three sky stops top to bottom, raised-surface blue through the accent to bright blue, so the
+# frame reads as lit from above. Both gradients stay inside one hue family on purpose: blending
+# across the colour wheel produces a middle colour that belongs to no slot.
+hyprland_active_border = "lighter_background accent bright_blue 90deg"
 # Sun-gold selection: warm on the cool raised surface, so selected text is unmistakable. The earlier
 # sky selection (#c4d8ea) measured 1.08:1 against lighter_background, which made it invisible on the
 # active line. Body text on this gold is 10:1.
