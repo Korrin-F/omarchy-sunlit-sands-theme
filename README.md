@@ -100,3 +100,7 @@ omarchy theme refresh
 The hook is generic: any theme that ships an `extra-icons/<Name>/index.theme` folder gets its icons selected, and themes without one are left as Omarchy set them.
 
 To undo: `rm ~/.config/omarchy/hooks/theme-set.d/link-theme-icons ~/.local/share/icons/Sunlit-Sands` then `omarchy theme refresh`
+
+## Credits and licence
+
+The theme, its wallpapers, folder icons and hand-tuned app files are by Korrin-F, released under the MIT licence (see `LICENSE`). The boot-screen logo is the Omarchy wordmark, copyright David Heinemeier Hansson and released under the MIT licence, recoloured and given cacti for this theme.
