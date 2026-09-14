@@ -19,7 +19,7 @@ It installs as `sunlit-sands`.
 
 ## Wallpapers
 
-Six scenes depicting the Arizona Desert at high noon. Painted in the same flat gouache style. Featuring bright bleached skies and sunlit sands. They are calm enough to keep the bar readable even in transparent mode.
+Six scenes depicting the Arizona Desert at high noon. Painted in the same flat gouache style. Featuring bright bleached skies and sunlit sands. They are calm enough to keep the bar readable even in transparent mode. Each wallpaper was hand-tuned in Lightroom so the colours and lighting are cohesive across the set.
 
 <p>
   <img src="screenshots/wallpaper-1-sonoran-desert-flat.webp" width="32%" alt="Sonoran desert flat">
@@ -35,6 +35,8 @@ Six scenes depicting the Arizona Desert at high noon. Painted in the same flat g
 ## Theme Details
 
 The page is warm sand and the panels are cool sky; that temperature contrast is what reads as sunlight. Selection is gold, the accent is sky cerulean, and the terminal palette leans on terracotta, ochre and sage reflecting the colors of the desert at high noon.
+
+Care went into the details. The wallpapers were generated, then each one was hand-tuned in Lightroom so the colours and light agree across the set. The folder icons started as drafts and were refined by hand in Illustrator: a mesa with a saguaro on the plain folder, a glyph for each special one, exported at ten sizes. The boot logo was drawn pixel by pixel on the grid of the Omarchy wordmark. And every app was opened, inspected on screen and fine-tuned, one at a time.
 
 <p>
   <img src="screenshots/terminal-palette.webp" width="48%" alt="The terminal palette">
