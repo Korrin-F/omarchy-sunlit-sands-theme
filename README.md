@@ -1,6 +1,6 @@
 # Sunlit Sands (light)
 
-An [Omarchy](https://omarchy.org) theme. A warm sand page under a cool sky, for working in daylight. Work in progress.
+An [Omarchy](https://omarchy.org) theme. A warm sand page under a cool sky, for working in daylight. Inspired by the sunlit sands of the Arizona Desert. Theme contains optional extras including custom folder icons and app templates that require additional configuration (see below). A dark companion, Moonlit Sands, is in the works.
 
 ![Sunlit Sands on the desktop: Zed, the terminal palette, Files and btop over a desert wallpaper](screenshots/desktop.webp)
 
@@ -12,11 +12,14 @@ omarchy theme install https://github.com/Korrin-F/omarchy-sunlit-sands-light-the
 
 Or in Omarchy: Super+Space, then Install > Style > Theme and paste the URL above.
 
-That is all it takes. It installs as `sunlit-sands-light`. Everything below is optional.
+It installs as `sunlit-sands-light`.
+
+> [!NOTE]
+> Not all theme elements are installed fully by this method, if you are interested in a fuller theme, including custom folder icons and more apps that have been customised for this theme, then see the full list of instructions below to install the rest.
 
 ## Wallpapers
 
-Six scenes in the same flat gouache, all at high noon: bleached sky in the upper two thirds, land in the bottom third, calm enough to keep the bar readable. Omarchy cycles through them.
+Six scenes depicting the Arizona Desert at high noon. Painted in the same flat gouache style. Featuring bright bleached skies and sunlit sands. They are calm enough to keep the bar readable even in transparent mode.
 
 <p>
   <img src="screenshots/wallpaper-1-sonoran-desert-flat.webp" width="32%" alt="Sonoran desert flat">
@@ -29,29 +32,31 @@ Six scenes in the same flat gouache, all at high noon: bleached sky in the upper
   <img src="screenshots/wallpaper-6-heat-shimmer-highway.webp" width="32%" alt="Heat shimmer highway">
 </p>
 
-## A closer look
+## Theme Details
 
-The page is warm sand and the panels are cool sky; that temperature contrast is what reads as sunlight. Selection is gold, the accent is sky cerulean, and the terminal palette leans on terracotta, ochre and sage.
+The page is warm sand and the panels are cool sky; that temperature contrast is what reads as sunlight. Selection is gold, the accent is sky cerulean, and the terminal palette leans on terracotta, ochre and sage reflecting the colors of the desert at high noon.
 
 <p>
   <img src="screenshots/terminal-palette.webp" width="48%" alt="The terminal palette">
   <img src="screenshots/files-mesa-folders.webp" width="48%" alt="Files with the mesa folder icons">
 </p>
 
-Left: the full palette in the terminal. Right: Files with the theme's own folder icons, terracotta mesas with a saguaro, on the sky sidebar.
+Left: the full palette in the terminal.
+Right: Files with the theme's custom folder icons. All folders are of a terracotta mesa. The icon on plain folders is a saguaro cactus, native to the Sonoran Desert.
 
 <p>
   <img src="screenshots/menu.webp" width="32%" alt="The Omarchy menu">
   <img src="screenshots/boot-screen.webp" width="64%" alt="The boot screen">
 </p>
 
-Left: the Omarchy menu, sand card with a sky border. Right: the boot and disk-unlock screen, the Omarchy wordmark in five warm bands with cacti growing out of the letters.
+Left: the Omarchy menu, sand coloured card with a sky border in a gradient. 
+Right: the boot and disk-unlock screen, the Omarchy wordmark in five warm bands in the style of a terracotta mesa with saguaro cacti growing out of the letters. 
 
-## What it themes
+## What is Themed?
 
-Everything Omarchy themes, plus hand-tuned files for the Omarchy shell (bar, menus, notifications), btop, Helix, Obsidian, VS Code, Chromium and Brave, Claude Code and Pi, so those apps get the same sand page and sky panels instead of a generic conversion.
+Everything Omarchy themes as standard, plus hand-tuned files for the Omarchy shell (bar, menus, notifications), btop, Helix, Obsidian, VS Code, Chromium and Brave, Claude Code and Pi, so those apps get the same sand page and sky panels instead of a generic conversion.
 
-As with any Omarchy theme, a few apps need one step the first time:
+As with any Omarchy theme, a few apps need one step to activate the theme for the first time:
 
 - Obsidian: Settings > Appearance > Themes > Manage, choose "Omarchy".
 - Claude Code: run `omarchy-theme-set-claude --activate` once.
@@ -60,7 +65,8 @@ As with any Omarchy theme, a few apps need one step the first time:
 
 ## Optional extras
 
-Omarchy themes an app by filling a template with the palette on every theme change, and it lets you add your own templates for apps it has not covered yet. This theme's `extra-templates/` folder holds two such templates, for GTK apps and for Zed. Omarchy does not read that folder on its own, so each one takes a single paste: copy the template into Omarchy's user-templates folder, then link the file it produces to where the app looks. The folder icons work the same way but need a small script instead of a template. Skip any of these and the theme works fine without.
+Omarchy themes an app by filling a template with the palette on every theme change, and it lets you add your own templates for apps it has not covered yet. This theme's `extra-templates/` folder holds two such templates, for GTK apps (such as the file manager) and for Zed.
+Omarchy does not read that folder on its own, so each one takes a single paste: copy the template into Omarchy's user-templates folder, then link the file it produces to where the app looks (instructions are below). The custom folder icons work the same way but need a small script instead of a template. 
 
 ### Files and other GTK apps
 
