@@ -1,0 +1,21 @@
+Sunlit Sands artwork licence
+
+The artwork in this theme is copyright (c) 2026 Korrin-F and is licensed under
+the Creative Commons Attribution-NonCommercial 4.0 International licence
+(CC BY-NC 4.0). Full text: https://creativecommons.org/licenses/by-nc/4.0/legalcode
+
+It covers:
+  - the six wallpapers in backgrounds/
+  - the folder icon set in extra-icons/Sunlit-Sands/
+  - the boot-screen logo, unlock.png and preview-unlock.png
+  - the images in screenshots/ and preview.png
+
+You may share and adapt this artwork for non-commercial purposes, provided you
+credit Korrin-F and indicate any changes. Commercial use needs the author's
+permission.
+
+The boot-screen logo is built on the Omarchy wordmark, copyright David Heinemeier
+Hansson and released under the MIT licence; that notice travels with it.
+
+Everything else in this repository (configuration files and templates) is under
+the MIT licence in LICENSE.

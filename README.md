@@ -144,4 +144,4 @@ To undo: `rm ~/.config/omarchy/hooks/theme-set.d/link-theme-icons ~/.local/share
 
 ## Credits and licence
 
-The theme, its wallpapers, folder icons and hand-tuned app files are by Korrin-F, released under the MIT licence (see `LICENSE`). The boot-screen logo is the Omarchy wordmark, copyright David Heinemeier Hansson and released under the MIT licence, recoloured and given cacti for this theme.
+The configuration files and templates are by Korrin-F under the MIT licence (see `LICENSE`). The artwork is by Korrin-F under Creative Commons Attribution-NonCommercial 4.0 (see `LICENSE-ARTWORK`): the six wallpapers, the folder icon set, the boot-screen logo and the screenshots. Credit Korrin-F when you use it; commercial use needs permission. The boot-screen logo is built on the Omarchy wordmark, copyright David Heinemeier Hansson, MIT licence.
