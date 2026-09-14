@@ -4,14 +4,14 @@
 # [palette], so after a palette change regenerate it (delete this file, `omarchy theme refresh`, copy
 # ~/.local/state/omarchy/current/theme/helix.toml back) and re-apply the changes listed here.
 #
-# Changes from the template, mirroring the VS Code mapping:
-#   ui.statusline            fg background / bg foreground  ->  fg foreground / bg dark_background  (status bar on the sky blue, like VS Code)
+# Changes from the template:
+#   ui.statusline            fg background / bg foreground  ->  fg foreground / bg dark_background  (status bar on the sky blue)
 #   ui.statusline.inactive   bg color8                      ->  fg color8 / bg dark_background
 #   ui.bufferline            bg background                  ->  bg dark_background  (tab strip on the blue, inactive tabs muted)
-#   ui.bufferline.active     underline color5               ->  underline accent    (active tab stays sand, accent line like VS Code)
+#   ui.bufferline.active     underline color5               ->  underline accent    (active tab stays sand, accent underline)
 #   ui.window                fg color8                      ->  fg darker_background  (dividers on the recess blue)
 #   ui.menu.selected         fg background / bg foreground  ->  fg foreground / bg lighter_background  (selected row on the raised blue)
-#   ui.cursorline.primary    bg lighter_background          ->  bg dark_background  (current line on the lightest blue, as chosen for VS Code)
+#   ui.cursorline.primary    bg lighter_background          ->  bg dark_background  (current line on the lightest blue)
 #   [palette]                added dark_background, darker_background, accent
 # Unchanged on purpose: ui.background transparent (terminal is sand anyway), ui.selection gold,
 # ui.text.focus and ui.highlight on lighter_background, line numbers and dimmed text on color8 (= muted).
@@ -78,7 +78,7 @@
 "ui.linenr" = { fg = "color8" }
 "ui.linenr.selected" = { fg = "foreground" }
 
-# Statusline on the panel blue with body-text ink, matching VS Code's status bar in this theme.
+# Statusline on the panel blue with body-text ink.
 "ui.statusline" = { fg = "foreground", bg = "dark_background" }
 "ui.statusline.inactive" = { fg = "color8", bg = "dark_background" }
 "ui.statusline.normal" = { fg = "background", bg = "color4", modifiers = ["bold"] }

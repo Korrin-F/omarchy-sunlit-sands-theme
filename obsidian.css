@@ -1,8 +1,8 @@
 /* Omarchy Theme for Obsidian: Sunlit Sands (light), hand-shipped copy.
    Omarchy's built-in template puts every Obsidian surface on `background`. This file is shipped in the
-   theme so the chrome (sidebars, icon ribbon, tab strip, title bar) takes `dark_background`, the same
-   pale sky as Zed and VS Code in this theme, and the page stays cream. It carries real values, not
-   placeholders: when colors.toml changes, regenerate from the template and re-apply these edits.
+   theme so the chrome (sidebars, icon ribbon, tab strip, title bar) takes `dark_background`, the pale
+   sky, and the page stays cream. It carries real values, not placeholders: when colors.toml changes,
+   regenerate from the template and re-apply these edits.
    Mapping: page = background #f7f1e3; the "alt" surface (settings cards and the editor's active line) =
    dark_background #dbe7f2; sidebars, ribbon, tab strip, title bar = dark_background #dbe7f2; selected row
    and hover = lighter_background; dividers = darker_background #bfd3e6 (the template used muted, which
@@ -51,7 +51,7 @@
 
   /* Border color */
   --background-modifier-border: #bfd3e6;
-  /* Scrollbars: solid palette colours, as in VS Code. Resting on the raised
+  /* Scrollbars: solid palette colours. Resting on the raised
      surface, accent while dragging. Obsidian exposes no separate hover state for the
      scrollbar thumb, so there are two values here, not three. */
   --scrollbar-bg: transparent;
@@ -78,7 +78,7 @@
   /* Hover on Obsidian's own controls, for example the canvas buttons, which were coming out white. */
   --interactive-hover: #bcd8f5;
   /* Text inputs: the search box and every settings field. Obsidian's light default is plain white,
-     which stood out against the blue sidebars; sand puts them on the page colour, as in VS Code. */
+     which stood out against the blue sidebars; sand puts them on the page colour. */
   --background-modifier-form-field: #f7f1e3;
   --text-accent: #2a78b0;
   --text-accent-hover: #2a78b0;

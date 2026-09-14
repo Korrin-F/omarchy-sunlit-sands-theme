@@ -52,7 +52,7 @@
 /* Files path bar: on the raised surface; on the header colour (ink at 10%) it vanished until clicked. */
 .nautilus-pathbar { background-color: {{ lighter_background }}; }
 
-/* Sidebar rows: selected and hovered on the raised surface, ink text (the VS Code list choice). */
+/* Sidebar rows: selected and hovered on the raised surface, ink text. */
 .navigation-sidebar row:selected,
 .navigation-sidebar child:selected,
 .navigation-sidebar flowboxchild:selected,
@@ -69,8 +69,7 @@
 /* Dim labels (column headings, sizes, dates, subtitles): were the ink at reduced opacity. */
 .dim-label, .dimmed { opacity: 1; color: {{ dark_foreground }}; }
 
-/* Scrollbar: accent thumb, blue while dragging, raised-surface track while the bar is expanded
-   (the VS Code scrollbar choice). */
+/* Scrollbar: accent thumb, blue while dragging, raised-surface track while the bar is expanded. */
 scrollbar > range > trough > slider { background-color: {{ accent }}; }
 scrollbar > range > trough > slider:hover { background-color: {{ accent }}; }
 scrollbar > range > trough > slider:active { background-color: {{ blue }}; }

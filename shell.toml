@@ -1,5 +1,5 @@
 # Sunlit Sands (light): hand-shipped copy of Omarchy's generated shell.toml (bar, menus, notifications, OSD, lock screen); replaces the template's output for everyone who installs the theme. Carries real values — after a palette change, regenerate it (delete, `omarchy theme refresh`, copy back) and re-apply the changes below.
-# Changes from the template, mirroring the VS Code mapping: chrome on dark_background, hover/selected on lighter_background, dividers on darker_background, cards stay sand.
+# Changes from the template: chrome on dark_background, hover/selected on lighter_background, dividers on darker_background, cards stay sand.
 #   [bar]           background dark_background #dbe7f2, solid (no alpha)
 #   [controls]      resting fill dark_background with darker_background border; hover and focus are an accent ring only, no fill; selected is an ink tint at 0.18 with a 1px accent outline (selected-color also sets the selected text/icon colour and the slider track, so it has to be an ink)
 #   [popups]        background dark_background; accent border kept
