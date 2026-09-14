@@ -9,7 +9,7 @@
 
 @define-color window_bg_color {{ background }};
 @define-color window_fg_color {{ foreground }};
-/* view_bg_color: the content pane (Files list, editor views) on the sand page; the chrome stays sky. Korrin's choice, 2026-09-10. */
+/* view_bg_color: the content pane (Files list, editor views) on the sand page; the chrome stays sky. */
 @define-color view_bg_color {{ background }};
 @define-color view_fg_color {{ foreground }};
 @define-color headerbar_bg_color {{ dark_background }};
@@ -38,7 +38,7 @@
 @define-color error_fg_color {{ background }};
 @define-color error_color {{ red }};
 
-/* ---- Widget rules, 2026-09-10 (Korrin: "make all the changes") ----
+/* ---- Widget rules ----
    libadwaita derives several colours by mixing the text colour at a low opacity over the
    surface ("currentColor N%"), which lands on greys that belong to no palette slot. The
    rules below replace those mixes with solid palette colours. Selectors were read from the
@@ -49,8 +49,7 @@
    page, so it followed the sand pane. Put it back on the sky, like the sidebar's header. */
 .content-pane headerbar { background-color: {{ dark_background }}; }
 
-/* Files path bar: was ink at 10% over the header. Round 3: on the raised surface, since on the
-   header colour it vanished until clicked (Korrin, 2026-09-10). */
+/* Files path bar: on the raised surface; on the header colour (ink at 10%) it vanished until clicked. */
 .nautilus-pathbar { background-color: {{ lighter_background }}; }
 
 /* Sidebar rows: selected and hovered on the raised surface, ink text (the VS Code list choice). */
@@ -77,17 +76,13 @@ scrollbar > range > trough > slider:hover { background-color: {{ accent }}; }
 scrollbar > range > trough > slider:active { background-color: {{ blue }}; }
 scrollbar.overlay-indicator.hovering > range > trough { background-color: {{ lighter_background }}; }
 
-/* ---- Round 3, 2026-09-10 ---- */
-
-/* Strip of window background showing between the window border and the content-side header:
-   paint the toolbar-view top bar on the sky as well. First try; if the strip stays, the next
-   candidate is `.content-pane` itself. */
+/* Strip of window background between the window border and the content-side header: paint the
+   toolbar-view top bar on the sky as well. */
 .content-pane toolbarview > .top-bar { background-color: {{ dark_background }}; }
 
-/* Selected rows in lists and grids (Files list and icon views, and lists elsewhere): libadwaita
-   uses the accent at 25% over the page, which measured as a warm grey #dedacf on the sand.
-   Korrin: the selection should be the gold. Ink text on it. Hover on an unselected row on the
-   sky panel colour. */
+/* Selected rows in lists and grids (Files list and icon views, and lists elsewhere): libadwaita's
+   accent-at-25%-over-page default measured as a warm grey #dedacf on the sand, so this uses the
+   gold selection colour instead, with ink text. Hover on an unselected row is the sky panel colour. */
 listview > row:selected,
 columnview > listview > row:selected,
 gridview > child:selected,
@@ -100,6 +95,6 @@ columnview > listview > row.activatable:hover,
 gridview > child.activatable:hover { background-color: {{ dark_background }}; }
 
 /* Files: the solid star on a favourited item. Files gives it no colour of its own, so it inherited
-   the row's ink; Korrin wanted it gold. `bright_yellow` rather than the pale `selection` gold, which
-   would vanish on the sand page (about 1.2 to 1). 2026-09-10. */
+   the row's ink; now `bright_yellow` rather than the pale `selection` gold, which would vanish on the
+   sand page (about 1.2 to 1). */
 button.star.starred { color: {{ bright_yellow }}; }

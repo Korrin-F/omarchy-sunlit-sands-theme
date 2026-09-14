@@ -34,7 +34,7 @@
         "statusBar.noFolderBackground: template #f7f1e3 -> shipped #dbe7f2 (dark_background)",
         "statusBar.noFolderBorder: template #f7f1e3 -> shipped #bfd3e6 (darker_background)",
         "statusBarItem.activeBackground: template #5d6b7d -> shipped #bfd3e6 (darker_background)",
-        "statusBarItem.compactHoverBackground: template #5d6b7d -> shipped #f3e2a0 (selection gold: the item under the pointer inside the compact git group; the group itself uses hoverBackground. darker_background was tried first and read as muddy next to lighter_background)",
+        "statusBarItem.compactHoverBackground: template #5d6b7d -> shipped #f3e2a0 (selection gold: the item under the pointer inside the compact git group; the group itself uses hoverBackground)",
         "statusBarItem.hoverBackground: template #5d6b7d60 -> shipped #bcd8f5 (lighter_background)",
         "tab.border: template #f7f1e3 -> shipped #dbe7f2 (dark_background)",
         "tab.hoverBackground: template #5d6b7d40 -> shipped #bcd8f5 (lighter_background)",

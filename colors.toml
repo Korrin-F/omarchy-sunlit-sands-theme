@@ -1,41 +1,26 @@
 # Sunlit Sands: a light theme built from the wallpapers in backgrounds/.
-# Background direction: round 2, option 1e "sunlit sand, own the blue", with the 1g text and selection
-# fixes and the 1h raised-surface fix of 2026-09-07 (see sunlit-sands-light-theme.md).
 # Contrast ratios in comments are against `background`; text colours clear 4.5:1 (WCAG AA).
-# Painter's rule for sunshine: warm light, cool shadow. The main surface is sunlit cream, the raised
-# surfaces and panels are the short blue shadows and the sky, the ink is blue-violet.
 
 mode = "light"
 
-# Sky cerulean. Borders and bar highlights read as sky against the cream. 4.2:1, fine for borders and highlights.
+# Sky cerulean: borders and bar highlights against the cream, 4.2:1.
 accent = "#2a78b0"
 # Window borders. Omarchy's Hyprland template reads these two keys when present (otherwise a stock grey for
 # unfocused and the accent for focused); each takes one colour or a gradient of slot names plus an angle.
 # Unfocused: a quiet top-to-bottom blend from the muted ink to the dimmed ink, so idle frames stay in the palette.
 hyprland_inactive_border = "muted dark_foreground 90deg"
-# Focused: three sky stops top to bottom, raised-surface blue through the accent to bright blue, so the
-# frame reads as lit from above. Both gradients stay inside one hue family on purpose: blending
-# across the colour wheel produces a middle colour that belongs to no slot.
+# Focused: three sky stops top to bottom, raised-surface blue through accent to bright blue, so the frame reads as lit from above. Both gradients stay inside one hue family; crossing the wheel invents a midpoint colour that belongs to no slot.
 hyprland_active_border = "lighter_background accent bright_blue 90deg"
-# Sun-gold selection: warm on the cool raised surface, so selected text is unmistakable. The earlier
-# sky selection (#c4d8ea) measured 1.08:1 against lighter_background, which made it invisible on the
-# active line. Body text on this gold is 10:1.
+# Sun-gold selection: warm on the cool raised surface, so selected text is unmistakable. Body text on this gold is 10:1.
 selection = "#f3e2a0"
-# Cool shadow grey, darkened on 2026-09-07 from #8e9bab so the roles Zed maps here (file panel names,
-# inactive tab labels, line numbers, comments) read on the sky panel: 4.8:1 on background, 4.3:1 on
-# dark_background. Also the btop gradient middle. Note: Omarchy's built-in Hyprland template hardcodes
-# the inactive window border, so this slot does not reach it.
+# Cool shadow grey: Zed's file panel names, inactive tab labels, line numbers and comments, 4.8:1 on background, 4.3:1 on dark_background. Also the btop gradient middle.
 muted = "#5d6b7d"
 
-# The main surface is warm cream (sunlit sand). The panels, raised surfaces and recesses are a clearly
-# intended pale sky blue, stronger than option 1 so it reads as a deliberate sky band, not a grey gone cool,
-# deliberately a different tint: that temperature contrast is what reads as sun.
 # lighter_background is the raised surface (hover, selection, cards). In a light theme that is a
 # shade DARKER than background; lighter than it reads as white.
 background = "#f7f1e3"
-# Raised surface pushed to a stronger, more saturated sky on 2026-09-07 (1h): the earlier #cfe0ef sat
-# 1.07:1 from dark_background, so Zed's selected file row barely showed. Same lightness, more colour,
-# so blue text on it loses almost nothing (bright_blue 2.5:1, blue 3.6:1, foreground 8.9:1).
+# Raised surface: a stronger, more saturated sky than dark_background (1.17:1), so a selected row shows.
+# Blue text on it: bright_blue 2.5:1, blue 3.6:1, foreground 8.9:1.
 lighter_background = "#bcd8f5"
 dark_background = "#dbe7f2"
 darker_background = "#bfd3e6"
@@ -43,15 +28,14 @@ darker_background = "#bfd3e6"
 # Blue-violet ink: text as the colour of a noon shadow, not brown.
 # 11.6:1
 foreground = "#2a2f4a"
-# 4.2:1 on background, 3.8:1 on dark_background; dimmed text and comments. Darkened a step on
-# 2026-09-07 from #7b7f96 so sizes and dates in the Files list clear the sky surface.
+# 4.2:1 on background, 3.8:1 on dark_background; dimmed text and comments.
 dark_foreground = "#6e7288"
 # 7.5:1, secondary text
 light_foreground = "#474c66"
 # cursor and bright white, same as foreground in a light theme
 bright_foreground = "#2a2f4a"
 
-# Terminal colours: cleaner and more saturated than round 1, kept at or above 4.5:1.
+# Terminal colours: cleaner and more saturated, kept at or above 4.5:1.
 # coral rust, 4.7:1
 red = "#c43a2a"
 # sun-gold, as saturated as 4.5:1 allows, 4.6:1
@@ -69,9 +53,7 @@ magenta = "#8a5a9e"
 # dry wood, 6.1:1
 brown = "#7a5230"
 
-# Bright variants: the same hues lifted and more saturated, so bold and bright terminal text
-# visibly differs from normal. They sit at about 3.2 to 3.5:1 against background, below the 4.5:1
-# body-text line but readable; Korrin chose visibility over the extra contrast (2026-09-06).
+# Bright variants: the same hues lifted and more saturated, so bold and bright terminal text visibly differs from normal. They sit at about 3.2 to 3.5:1 against background, below the 4.5:1 body-text line but readable.
 bright_red = "#e8452f"
 bright_yellow = "#a67a00"
 bright_green = "#56942f"

@@ -4,7 +4,7 @@
 # [palette], so after a palette change regenerate it (delete this file, `omarchy theme refresh`, copy
 # ~/.local/state/omarchy/current/theme/helix.toml back) and re-apply the changes listed here.
 #
-# Changes from the template, mirroring the VS Code mapping (2026-09-07):
+# Changes from the template, mirroring the VS Code mapping:
 #   ui.statusline            fg background / bg foreground  ->  fg foreground / bg dark_background  (status bar on the sky blue, like VS Code)
 #   ui.statusline.inactive   bg color8                      ->  fg color8 / bg dark_background
 #   ui.bufferline            bg background                  ->  bg dark_background  (tab strip on the blue, inactive tabs muted)

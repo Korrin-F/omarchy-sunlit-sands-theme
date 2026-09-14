@@ -1,20 +1,13 @@
-# Sunlit Sands (light): hand-shipped copy of Omarchy's generated shell.toml (bar, menus, notifications,
-# OSD, lock screen). Shipped unchanged on 2026-09-07 as a starting point for per-app refinement; a copy in
-# the theme folder replaces the template's output for everyone who installs the theme. It carries real
-# values, so after a palette change regenerate it (delete, `omarchy theme refresh`, copy back) and re-apply
-# the changes listed here. Alternative: ship only `shell.<section>.toml` (for example shell.bar.toml) to
-# override one section and keep the rest generated.
-# Changes from the template (2026-09-08), mirroring the VS Code mapping: chrome on dark_background,
-# hover/selected on lighter_background, dividers on darker_background, cards stay sand.
-#   [bar]           background sand -> dark_background #dbe7f2; background-alpha left at 1.0 (0.8 was tried on 2026-09-08 and rejected the next day: Korrin wanted the bar solid so it matches the other chrome; the global transparency toggle is separate and still works)
-#   [controls]      resting fill dark_background (was ink 4%) with darker_background border; hover is a ring only: "accent" outline, no fill (a fill lingered on the last hovered item because the panel keyboard cursor shares the hover state, and lit whole slider rows) (was ink 8%; a solid hover fill flashed grey because the shell animates the fill from transparent black over 120 ms, Ui/Button.qml, 2026-09-08). Selected uses "accent": the shell paints a selected button's text AND fill from selected-color, so it must be an ink, tinted at 0.18 with a 1px accent outline (a solid palette fill there made text invisible on toggles, the AI provider picker and slider tracks, 2026-09-08).
-#                   Focus is a ring only: focus-color/border "accent", fill alpha 0 (a solid focus fill lingered after every hover because the keyboard cursor stays on the last button).
-#   [popups]        background dark_background (OSD and bar flyouts stand apart from sand windows); accent border kept
+# Sunlit Sands (light): hand-shipped copy of Omarchy's generated shell.toml (bar, menus, notifications, OSD, lock screen); replaces the template's output for everyone who installs the theme. Carries real values — after a palette change, regenerate it (delete, `omarchy theme refresh`, copy back) and re-apply the changes below.
+# Changes from the template, mirroring the VS Code mapping: chrome on dark_background, hover/selected on lighter_background, dividers on darker_background, cards stay sand.
+#   [bar]           background dark_background #dbe7f2, solid (no alpha)
+#   [controls]      resting fill dark_background with darker_background border; hover and focus are an accent ring only, no fill; selected is an ink tint at 0.18 with a 1px accent outline (selected-color also sets the selected text/icon colour and the slider track, so it has to be an ink)
+#   [popups]        background dark_background; accent border kept
 #   [tooltip]       background dark_background, border darker_background
-#   [notifications] background lighter_background #bcd8f5 (a card that wants attention); accent border and countdown kept
-#   [launcher]      selected row lighter_background solid with ink text and darker_background border (was ink 8% with accent text)
+#   [notifications] background lighter_background #bcd8f5; accent border and countdown kept
+#   [launcher]      selected row lighter_background solid with ink text and darker_background border
 #   [menu]          same as launcher
-#   Unchanged on purpose: [lock] and [polkit] (Korrin: "looks right, wouldn't change"), launcher/menu card backgrounds (popups stay sand pages).
+#   Unchanged: [lock] and [polkit]; launcher/menu card backgrounds stay sand
 
 # Omarchy shell surfaces. Colors derive from colors.toml; sizes and the
 # typographic scale come from the keys below. Themes can ship
