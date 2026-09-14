@@ -1,4 +1,4 @@
-# Sunlit Sands (light): hand-shipped copy of Omarchy's generated btop.theme; replaces the template's output for everyone who installs the theme. Regenerate after a palette change (delete, `omarchy theme refresh`, copy back) and re-apply the changes listed here.
+# Sunlit Sands: hand-shipped copy of Omarchy's generated btop.theme; replaces the template's output for everyone who installs the theme. Regenerate after a palette change (delete, `omarchy theme refresh`, copy back) and re-apply the changes listed here.
 # Changes from the template: every graph gradient (temp, cpu, free, cached, available, used, download, upload, process) uses the bright_* terminal colours instead of the normal ones, so the dotted graphs pop on the sand page; graph_text and proc_misc moved from light_foreground to foreground because they read as too light. Box borders, title, selection and gradient_color_N are the template's own.
 
 # Main background, empty for terminal default, need to be empty if you want transparent background

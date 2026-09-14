@@ -1,4 +1,4 @@
-# Sunlit Sands (light)
+# Sunlit Sands
 
 An [Omarchy](https://omarchy.org) theme. A warm sand page under a cool sky, for working in daylight. Inspired by the sunlit sands of the Arizona Desert. Theme contains optional extras including custom folder icons and app templates that require additional configuration (see below). A dark companion, Moonlit Sands, is in the works.
 
@@ -7,12 +7,12 @@ An [Omarchy](https://omarchy.org) theme. A warm sand page under a cool sky, for 
 ## Install
 
 ```
-omarchy theme install https://github.com/Korrin-F/omarchy-sunlit-sands-light-theme
+omarchy theme install https://github.com/Korrin-F/omarchy-sunlit-sands-theme
 ```
 
 Or in Omarchy: Super+Space, then Install > Style > Theme and paste the URL above.
 
-It installs as `sunlit-sands-light`.
+It installs as `sunlit-sands`.
 
 > [!NOTE]
 > Not all theme elements are installed fully by this method, if you are interested in a fuller theme, including custom folder icons and more apps that have been customised for this theme, then see the full list of instructions below to install the rest.
@@ -74,7 +74,7 @@ Gives Files (Nautilus) and other GTK4 apps the sand page, sky sidebar and gold s
 
 ```
 mkdir -p ~/.config/omarchy/themed ~/.config/gtk-4.0
-cp ~/.config/omarchy/themes/sunlit-sands-light/extra-templates/gtk.css.tpl ~/.config/omarchy/themed/
+cp ~/.config/omarchy/themes/sunlit-sands/extra-templates/gtk.css.tpl ~/.config/omarchy/themed/
 ln -sfn ~/.local/state/omarchy/current/theme/gtk.css ~/.config/gtk-4.0/gtk.css
 omarchy theme refresh
 ```
@@ -88,7 +88,7 @@ To undo: `rm ~/.config/omarchy/themed/gtk.css.tpl ~/.config/gtk-4.0/gtk.css`
 Gives Zed the same sand page, sky chrome and gold selection as the other editors. Paste this once, then pick "Omarchy" in Zed's theme picker (Ctrl+K then Ctrl+T):
 
 ```
-cp ~/.config/omarchy/themes/sunlit-sands-light/extra-templates/zed.json.tpl ~/.config/omarchy/themed/
+cp ~/.config/omarchy/themes/sunlit-sands/extra-templates/zed.json.tpl ~/.config/omarchy/themed/
 mkdir -p ~/.config/zed/themes
 ln -sfn ~/.local/state/omarchy/current/theme/zed.json ~/.config/zed/themes/omarchy.json
 omarchy theme refresh

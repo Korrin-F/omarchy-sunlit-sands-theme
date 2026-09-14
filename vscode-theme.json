@@ -1,6 +1,6 @@
 {
     "_sunlit_sands_notes": [
-        "Sunlit Sands (light): hand-shipped VS Code theme. Omarchy's built-in template generates this file from colors.toml; a copy shipped in the theme folder replaces that output (for the author and for anyone who installs the theme). This field lists every key that differs from the template's output so it can be found and changed by hand. VS Code ignores this field.",
+        "Sunlit Sands: hand-shipped VS Code theme. Omarchy's built-in template generates this file from colors.toml; a copy shipped in the theme folder replaces that output (for the author and for anyone who installs the theme). This field lists every key that differs from the template's output so it can be found and changed by hand. VS Code ignores this field.",
         "To regenerate after a palette change: delete this file from the theme folder, run `omarchy theme refresh`, copy ~/.local/state/omarchy/current/theme/vscode-theme.json back into the theme folder, then re-apply the changes below.",
         "Colour roles: sand page = background #f7f1e3; chrome (activity strip, title bar, status bar, tab strip, inactive tabs) = dark_background #dbe7f2; selected/hovered rows and pills = lighter_background #bcd8f5; dividers = darker_background #bfd3e6. Button hover (menu bar, toolbar, status bar items, search box) = lighter_background #bcd8f5; pressed = darker_background #bfd3e6.",
         "activityBar.activeBackground: template #f7f1e340 -> shipped #bcd8f5 (lighter_background)",

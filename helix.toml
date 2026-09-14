@@ -1,4 +1,4 @@
-# Sunlit Sands (light): hand-shipped Helix theme.
+# Sunlit Sands: hand-shipped Helix theme.
 # Omarchy's built-in template generates this file from colors.toml; a copy shipped in the theme folder
 # replaces that output, for the author and for anyone who installs the theme. It carries real values in
 # [palette], so after a palette change regenerate it (delete this file, `omarchy theme refresh`, copy
