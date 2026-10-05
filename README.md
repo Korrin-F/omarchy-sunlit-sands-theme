@@ -68,7 +68,7 @@ As with any Omarchy theme, a few apps need one step to activate the theme for th
 ## Optional extras
 
 Omarchy themes an app by filling a template with the palette on every theme change, and it lets you add your own templates for apps it has not covered yet. This theme's `extra-templates/` folder holds two such templates, for GTK apps (such as the file manager) and for Zed.
-Omarchy does not read that folder on its own, so each one takes a single paste: copy the template into Omarchy's user-templates folder, then link the file it produces to where the app looks (instructions are below). The custom folder icons work the same way but need a small script instead of a template. 
+Omarchy does not read that folder on its own, so each one takes a single paste: copy the template into Omarchy's user-templates folder, then link the file it produces to where the app looks (instructions are below). The custom folder icons work the same way but need a small script instead of a template. The Hermes terminal agent needs neither, just one line in its own settings file.
 
 ### Files and other GTK apps
 
@@ -99,6 +99,21 @@ omarchy theme refresh
 Zed reloads it live and follows every theme change from then on. If Omarchy installed Zed for you, it also installed omazed, which keeps offering its own "Omazed" theme in the picker; the two do not interfere.
 
 To undo: `rm ~/.config/omarchy/themed/zed.json.tpl ~/.config/zed/themes/omarchy.json` and pick another theme in Zed.
+
+### Hermes Agent
+
+Omarchy themes Hermes by itself, but Hermes draws its status bar and menus through a library that sends 256 colours unless told otherwise, so those two surfaces come out in greys and a yellow instead of the palette. One line in Hermes's settings file fixes it. Paste this once:
+
+```
+mkdir -p ~/.hermes
+echo 'PROMPT_TOOLKIT_COLOR_DEPTH=DEPTH_24_BIT' >> ~/.hermes/.env
+```
+
+`PROMPT_TOOLKIT_COLOR_DEPTH` is an environment variable read by prompt_toolkit, the library Hermes uses for its input line, status bar and menus. `DEPTH_24_BIT` tells it to output the terminal's full 24-bit colour range instead of its 256-colour default. It changes nothing else about Hermes.
+
+Restart Hermes to see it. The line is about Hermes, not this theme, so it keeps working whichever theme is active. If Hermes is not yet following Omarchy's themes at all, run `omarchy-theme-set-hermes --activate` once after Hermes has been started for the first time.
+
+To undo: delete that line from `~/.hermes/.env`.
 
 ### Mesa folder icons
 
