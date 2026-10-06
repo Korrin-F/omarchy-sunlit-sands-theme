@@ -1,0 +1,208 @@
+#!/bin/bash
+# Installs the icon sets the applied theme ships in extra-icons/, telling each folder apart by content:
+# - index.theme: a desktop set, linked where GTK looks and selected; the first one wins.
+# - package.json with contributes.iconThemes: a VS Code set, linked into VS Code, VSCodium and Cursor and chosen.
+# - extension.toml with icon_themes: a Zed set, linked into Zed and chosen once in its settings.
+# Links left by an earlier theme's sets are removed. VS Code: reload the window after a theme switch.
+# Zed: restart once after the first install; later switches apply on their own.
+set -euo pipefail
+theme_dir=$HOME/.local/state/omarchy/current/theme
+icons_dir=$HOME/.local/share/icons
+mkdir -p "$icons_dir"
+
+# Remove links in the icons folder that no longer resolve.
+for link in "$icons_dir"/*; do
+  [[ -L $link && ! -e $link ]] && rm -f "$link"
+done
+
+# VS Code-family editors as "extensions folder:settings file"; an editor without the folder is skipped.
+editors=(
+  "$HOME/.vscode/extensions:$HOME/.config/Code/User/settings.json"
+  "$HOME/.vscode-oss/extensions:$HOME/.config/VSCodium/User/settings.json"
+  "$HOME/.cursor/extensions:$HOME/.config/Cursor/User/settings.json"
+)
+# Link name, extension id and icon theme id that every theme's VS Code set shares.
+link_name=omarchy-theme-icons
+extension_id=korrin-f.omarchy-theme-icons
+shared_icon_theme_id=omarchy-icons
+
+# Zed's data folder, the set's link, the settings file, the icon theme name every set shares, allowed names.
+zed_dir=$HOME/.local/share/zed
+zed_link=$zed_dir/extensions/installed/omarchy-icons
+zed_settings=$HOME/.config/zed/settings.json
+zed_shared_icon_theme="Omarchy Icons"
+zed_name_pattern='^[A-Za-z0-9 ._()-]+$'
+
+# Register the linked extension in an editor's extensions.json and remove it from .obsolete.
+register_extension() {
+  local ext_base=$1 version=$2
+  local link_path=$ext_base/$link_name
+  local extensions_file=$ext_base/extensions.json
+  local obsolete_file=$ext_base/.obsolete
+  local tmp
+
+  if [[ -f $obsolete_file ]]; then
+    tmp=$(mktemp) || return 0
+    if jq --arg key "$extension_id-$version" 'del(.[$key])' "$obsolete_file" >"$tmp"; then
+      mv "$tmp" "$obsolete_file" || rm -f "$tmp"
+      if [[ $(jq 'length' "$obsolete_file") == "0" ]]; then rm -f "$obsolete_file"; fi
+    else
+      rm -f "$tmp"
+    fi
+  fi
+
+  [[ -f $extensions_file ]] || printf '[]\n' >"$extensions_file" || return 0
+
+  tmp=$(mktemp) || return 0
+  if jq \
+    --arg id "$extension_id" \
+    --arg version "$version" \
+    --arg fs_path "$link_path" \
+    --arg external "file://$link_path" \
+    --arg relative "$link_name" \
+    'map(select(.identifier.id != $id)) + [{
+      identifier: { id: $id },
+      version: $version,
+      location: {
+        "$mid": 1,
+        fsPath: $fs_path,
+        external: $external,
+        path: $fs_path,
+        scheme: "file"
+      },
+      relativeLocation: $relative
+    }]' \
+    "$extensions_file" >"$tmp"; then
+    mv "$tmp" "$extensions_file" || rm -f "$tmp"
+  else
+    rm -f "$tmp"
+  fi
+}
+
+# Remove the extension's entry from an editor's extensions.json.
+unregister_extension() {
+  local extensions_file=$1/extensions.json tmp
+  command -v jq >/dev/null && [[ -f $extensions_file ]] || return 0
+  tmp=$(mktemp) || return 0
+  if jq --arg id "$extension_id" 'map(select(.identifier.id != $id))' "$extensions_file" >"$tmp"; then
+    mv "$tmp" "$extensions_file" || rm -f "$tmp"
+  else
+    rm -f "$tmp"
+  fi
+}
+
+# Set "workbench.iconTheme" in an editor's settings file, editing it in place.
+set_icon_theme() {
+  local settings_file=$1 icon_theme_id=$2
+  mkdir -p "$(dirname "$settings_file")" || return 0
+  [[ -f $settings_file ]] || printf '{\n}\n' >"$settings_file" || return 0
+  grep -q '"workbench.iconTheme"' "$settings_file" ||
+    sed -i --follow-symlinks -E '0,/\{/{s/\{/{\ "workbench.iconTheme": "",/}' "$settings_file" || return 0
+  sed -i --follow-symlinks -E \
+    "s|(\"workbench.iconTheme\"[[:space:]]*:[[:space:]]*\")[^\"]*(\")|\1$icon_theme_id\2|" "$settings_file" || return 0
+}
+
+# Set Zed's "icon_theme" in place: both values of the object form, the string form, or a new string entry.
+set_zed_icon_theme() {
+  local settings_file=$1 name=$2 key
+  mkdir -p "$(dirname "$settings_file")" || return 0
+  [[ -f $settings_file ]] || printf '{\n}\n' >"$settings_file" || return 0
+  if grep -Ezq '"icon_theme"[[:space:]]*:[[:space:]]*\{' "$settings_file"; then
+    for key in light dark; do
+      sed -i --follow-symlinks -zE \
+        "s|(\"icon_theme\"[[:space:]]*:[[:space:]]*\{[^}]*\"$key\"[[:space:]]*:[[:space:]]*\")[^\"]*(\")|\1$name\2|" \
+        "$settings_file" || return 0
+    done
+  elif grep -Ezq '"icon_theme"[[:space:]]*:[[:space:]]*"' "$settings_file"; then
+    sed -i --follow-symlinks -zE \
+      "s|(\"icon_theme\"[[:space:]]*:[[:space:]]*\")[^\"]*(\")|\1$name\2|" "$settings_file" || return 0
+  else
+    sed -i --follow-symlinks -E "0,/\{/{s/\{/{\ \"icon_theme\": \"$name\",/}" "$settings_file" || return 0
+  fi
+}
+
+shopt -s nullglob
+desktop_set_found=false
+vscode_set_found=false
+zed_set_found=false
+
+for set_dir in "$theme_dir"/extra-icons/*/; do
+  set_dir=${set_dir%/}
+
+  if [[ -f $set_dir/index.theme ]]; then
+    # Desktop set: link it where GTK looks and select it; the first one wins.
+    $desktop_set_found && continue
+    desktop_set_found=true
+    name=$(basename "$set_dir")
+    if ln -sfn "$set_dir" "$icons_dir/$name" && command -v gsettings >/dev/null; then
+      gsettings set org.gnome.desktop.interface icon-theme "$name" || true
+    fi
+
+  elif [[ -f $set_dir/package.json ]] && command -v jq >/dev/null &&
+    jq -e '.contributes.iconThemes[0].id' "$set_dir/package.json" >/dev/null 2>&1; then
+    # VS Code set: link, register and choose it in each installed editor; the first one wins.
+    $vscode_set_found && continue
+    icon_theme_id=$(jq -r '.contributes.iconThemes[0].id' "$set_dir/package.json")
+    [[ $icon_theme_id =~ ^[A-Za-z0-9._-]+$ ]] || continue
+    vscode_set_found=true
+    version=$(jq -r '.version // "0.0.0"' "$set_dir/package.json")
+    for editor in "${editors[@]}"; do
+      ext_base=${editor%%:*}
+      settings_file=${editor#*:}
+      link_path=$ext_base/$link_name
+      [[ -d $ext_base ]] || continue
+      # Leave a real folder under the link name alone.
+      [[ -e $link_path && ! -L $link_path ]] && continue
+      ln -sfn "$set_dir" "$link_path" || continue
+      register_extension "$ext_base" "$version"
+      set_icon_theme "$settings_file" "$icon_theme_id"
+    done
+
+  elif [[ -f $set_dir/extension.toml ]] && command -v jq >/dev/null &&
+    zed_theme_file=$(tr '\n' ' ' <"$set_dir/extension.toml" |
+      sed -nE 's/^(.*[[:space:]])?icon_themes[[:space:]]*=[[:space:]]*\[[[:space:]]*"([^"]+)".*$/\2/p') &&
+    [[ -n $zed_theme_file ]]; then
+    # Zed set: link it, and choose it in the settings if they do not name it yet; the first one wins.
+    $zed_set_found && continue
+    [[ -f $set_dir/$zed_theme_file ]] || continue
+    zed_name=$(jq -r '.themes[0].name // empty' "$set_dir/$zed_theme_file" 2>/dev/null) || continue
+    [[ $zed_name =~ $zed_name_pattern ]] || continue
+    zed_set_found=true
+    [[ -d $zed_dir ]] && mkdir -p "$(dirname "$zed_link")" || continue
+    # Leave a real folder under the link name alone.
+    [[ -e $zed_link && ! -L $zed_link ]] && continue
+    ln -sfn "$set_dir" "$zed_link" || continue
+    if ! [[ -f $zed_settings ]] ||
+      ! grep -Ezq "\"icon_theme\"[[:space:]]*:[[:space:]]*(\\{[^}]*\"dark\"[[:space:]]*:[[:space:]]*)?\"$zed_shared_icon_theme\"" "$zed_settings"; then
+      set_zed_icon_theme "$zed_settings" "$zed_name"
+      echo "Zed: icon theme set to $zed_name; restart Zed once to apply it. Later theme switches apply on their own."
+    fi
+  fi
+done
+
+# No VS Code set: remove a dangling link and its entry, and switch to vs-seti if it was chosen.
+if ! $vscode_set_found; then
+  for editor in "${editors[@]}"; do
+    ext_base=${editor%%:*}
+    settings_file=${editor#*:}
+    link_path=$ext_base/$link_name
+    [[ -d $ext_base && -L $link_path && ! -e $link_path ]] || continue
+    rm -f "$link_path" || true
+    unregister_extension "$ext_base"
+    if [[ -f $settings_file ]] &&
+      grep -Eq "\"workbench\.iconTheme\"[[:space:]]*:[[:space:]]*\"$shared_icon_theme_id\"" "$settings_file"; then
+      set_icon_theme "$settings_file" vs-seti
+    fi
+  done
+fi
+
+# No Zed set: remove a dangling Zed link.
+if ! $zed_set_found && [[ -d $zed_dir && -L $zed_link && ! -e $zed_link ]]; then
+  rm -f "$zed_link" || true
+fi
+
+# Touch Zed's theme link so Zed re-reads the new colours.
+zed_theme_link=$HOME/.config/zed/themes/omarchy.json
+[[ -L $zed_theme_link ]] && { touch -h "$zed_theme_link" 2>/dev/null || true; }
+
+exit 0

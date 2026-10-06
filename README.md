@@ -121,41 +121,12 @@ Folder icons drawn for this theme: terracotta mesas with a saguaro on the plain 
 
 ```
 mkdir -p ~/.config/omarchy/hooks/theme-set.d
-cat > ~/.config/omarchy/hooks/theme-set.d/link-theme-icons <<'EOF'
-#!/bin/bash
-# Omarchy runs every script in this folder after a theme is applied or refreshed,
-# passing the theme's name as $1. This one asks: does the theme that was just
-# applied ship an icon set? Omarchy copies a theme's extra-icons/ folder into
-# the live theme directory untouched, so the answer is on disk. If a set is
-# there, link it where GTK looks and select it. Themes without one are left
-# exactly as Omarchy set them from their icons.theme.
-#
-# An icon set is any folder holding an index.theme; its folder name must match
-# the Name= line inside (the normal convention). Written for the Sunlit Sands
-# theme, 2026-09-10; the README of that theme tells installers to copy this in.
-set -euo pipefail
-theme_dir=$HOME/.local/state/omarchy/current/theme
-icons_dir=$HOME/.local/share/icons
-mkdir -p "$icons_dir"
-
-# Drop links we made for a previous theme that no longer resolve.
-for link in "$icons_dir"/*; do
-  [[ -L $link && ! -e $link ]] && rm -f "$link"
-done
-
-shopt -s nullglob
-for index in "$theme_dir"/extra-icons/*/index.theme; do
-  set_dir=$(dirname "$index")
-  name=$(basename "$set_dir")
-  ln -sfn "$set_dir" "$icons_dir/$name"
-  gsettings set org.gnome.desktop.interface icon-theme "$name"
-  exit 0
-done
-EOF
+cp ~/.config/omarchy/themes/sunlit-sands/extra-icons/link-theme-icons ~/.config/omarchy/hooks/theme-set.d/
+chmod 755 ~/.config/omarchy/hooks/theme-set.d/link-theme-icons
 omarchy theme refresh
 ```
 
-The hook is generic: any theme that ships an `extra-icons/<Name>/index.theme` folder gets its icons selected, and themes without one are left as Omarchy set them.
+The hook ships inside the theme's `extra-icons/` folder. It is generic: after every theme change it installs whatever icon sets the applied theme carries there, telling them apart by content: a desktop set (`index.theme`) is linked where GTK looks and selected; a VS Code set is linked into VS Code's extensions folder and chosen in its settings (reload the window after a theme change); a Zed set is linked into Zed's extensions and chosen once in its settings (restart Zed once after the first install; later switches apply on their own). Themes without a set are left as Omarchy set them.
 
 To undo: `rm ~/.config/omarchy/hooks/theme-set.d/link-theme-icons ~/.local/share/icons/Sunlit-Sands` then `omarchy theme refresh`
 
