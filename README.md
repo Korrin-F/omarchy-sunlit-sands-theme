@@ -100,6 +100,37 @@ Zed reloads it live and follows every theme change from then on. If Omarchy inst
 
 To undo: `rm ~/.config/omarchy/themed/zed.json.tpl ~/.config/zed/themes/omarchy.json` and pick another theme in Zed.
 
+### Neovim file icons
+
+Omarchy themes Neovim by itself, but the file icons in its explorer and pickers are coloured by mini.icons, and the colorscheme Omarchy uses (aether.nvim) does not set those nine icon colours, so they fall back to code colours: two pairs come out the same, green and grey icons take plain text colour, and purple icons show yellow. This one file maps them to the theme's own palette and follows every theme switch live:
+
+```
+cat > ~/.config/nvim/lua/plugins/omarchy-icons.lua <<'EOF'
+return {
+  {
+    "bjarneo/aether.nvim",
+    opts = {
+      on_highlights = function(hl, c)
+        hl.MiniIconsRed = { fg = c.red }
+        hl.MiniIconsOrange = { fg = c.orange }
+        hl.MiniIconsYellow = { fg = c.yellow }
+        hl.MiniIconsGreen = { fg = c.green }
+        hl.MiniIconsCyan = { fg = c.cyan }
+        hl.MiniIconsBlue = { fg = c.blue }
+        hl.MiniIconsAzure = { fg = c.bright_blue }
+        hl.MiniIconsPurple = { fg = c.magenta }
+        hl.MiniIconsGrey = { fg = c.muted }
+      end,
+    },
+  },
+}
+EOF
+```
+
+The file adds one option to the colorscheme Omarchy already loads and reads the colours by palette name, so it carries no values of its own and works whichever theme is active. A running Neovim picks it up straight away; otherwise it loads on the next start. A theme cannot ship this file itself, because Omarchy refuses every `.lua` from an installed theme.
+
+To undo: `rm ~/.config/nvim/lua/plugins/omarchy-icons.lua`.
+
 ### Hermes Agent
 
 Omarchy themes Hermes by itself, but Hermes draws its status bar and menus through a library that sends 256 colours unless told otherwise, so those two surfaces come out in greys and a yellow instead of the palette. One line in Hermes's settings file fixes it. Paste this once:
