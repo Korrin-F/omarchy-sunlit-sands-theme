@@ -1,6 +1,6 @@
 # Sunlit Sands
 
-An [Omarchy](https://omarchy.org) theme. A warm sand page under a cool sky, for working in daylight. Inspired by the sunlit sands of the Arizona Desert. Theme contains optional extras including custom folder icons and app templates that require additional configuration (see below). A dark companion, Moonlit Sands, is in the works.
+An [Omarchy](https://omarchy.org) theme. A warm sand page under a cool sky, for working in daylight. Inspired by the sunlit sands of the Arizona Desert. Theme contains optional extras including custom folder icons and app templates that require additional configuration (see below). This is the day companion of [Moonlit Sands](https://github.com/Korrin-F/omarchy-moonlit-sands-theme) dark theme.
 
 ![Sunlit Sands on the desktop: Zed, the terminal palette, Files and btop over a desert wallpaper](screenshots/desktop.webp)
 
